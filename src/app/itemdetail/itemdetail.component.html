@@ -1,0 +1,63 @@
+<div>
+    <div class="container"
+      fxLayout="row"
+      fxLayout.sm="column"
+      fxLayout.xs="column"
+      fxLayoutAlign.gt-md="space-around center"
+      fxLayoutGap="10px" 
+      fxLayoutGap.xs="0">
+  
+     <div fxFlex="40">
+       <div fxFlex *ngIf="item">
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>
+              </mat-card-title>
+            </mat-card-header>
+            <!-- <img mat-card-image src={{item.image}} alt={{item.name}}> -->
+            <mat-card-content>
+                <img mat-card-image src={{item.image}} alt={{item.name}}>
+            </mat-card-content>
+            <mat-card-footer>
+                <h3>Price: Rs.{{item.price}}</h3>
+            </mat-card-footer>    
+          </mat-card>
+      </div>
+    </div>
+
+    <div fxFlex="40" *ngIf="item">
+     <h2>{{item.name | uppercase}}</h2>
+    <form novalidate [formGroup]= "cartitemForm" #fform="ngForm" (ngSubmit)="onSubmit()">  
+        <p> 
+        <mat-form-field>
+            <mat-label>Size</mat-label>
+            <mat-select formControlName='size' required> 
+              <mat-option value="Small">Small(1-Unit)</mat-option>
+              <mat-option value="Medium">Medium(2-Unit)</mat-option>
+              <mat-option value="Full">Full(3-Unit)</mat-option>
+            </mat-select>
+          </mat-form-field>
+         </p>
+         <p>
+          <mat-form-field>
+            <mat-label>Quantity</mat-label>
+            <mat-select formControlName="quantity" required>
+              <mat-option value="1">1</mat-option>
+              <mat-option value="2">2</mat-option>
+              <mat-option value="3">3</mat-option>
+              <mat-option value="4">4</mat-option>
+              <mat-option value="5">5</mat-option>
+              <mat-option value="6">6</mat-option>
+              <mat-option value="7">7</mat-option>
+              <mat-option value="8">8</mat-option>
+              <mat-option value="9">9</mat-option>
+              <mat-option value="10">10</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </p>  
+        <button type="button" routerLinkActive="active" routerLink="/checkout" mat-raised-button color="warn" (click)="onSubmit()" class="background-warn text-floral-white">Add to Cart</button>  
+    </form>     
+     </div>   
+
+ </div>
+</div>

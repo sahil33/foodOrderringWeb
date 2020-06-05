@@ -1,0 +1,31 @@
+<div class="container"
+     fxLayout="column"
+     fxLayoutGap="10px">
+
+  <div fxFlex>
+    <div>
+      <h3>Menu</h3>
+      <hr>
+    </div>
+  </div>
+
+  <div fxFlex>
+    <mat-grid-list cols="2" rowHeight="450px" >
+        <mat-grid-tile *ngFor="let item of items" [routerLink]="['/itemdetail', item.id]"> 
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>
+                  <h4>{{item.name | uppercase}}</h4>
+              </mat-card-title>
+            </mat-card-header>
+            <img   mat-card-image height="250px" width="250px" src={{item.image}} alt={{item.name}}>
+            <mat-card-content>
+                    <h3>Price/Unit : Rs.{{item.price}}</h3>
+            </mat-card-content>  
+           
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+  </div>
+</div>

@@ -1,0 +1,15 @@
+
+@mixin zero-margin($pad-up-down, $pad-left-right) {
+    margin: 0px auto;
+    padding: $pad-up-down $pad-left-right;
+}
+$background-moredark: #ff0000;
+
+.active {
+    background: $background-moredark;
+}
+
+.mat-toolbar{
+    background-color: #cc0000;
+    color: white;
+}

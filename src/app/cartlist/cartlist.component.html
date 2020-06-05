@@ -1,0 +1,59 @@
+
+
+<div class="container"
+fxLayout="row"
+fxLayout.sm="column"
+fxLayout.xs="column"
+fxLayoutAlign.gt-md="space-around center"
+fxLayoutGap="10px" 
+fxLayoutGap.xs="0">
+<div fxFlex="80" *ngIf="dataSource">
+<h3>Checkout all the  selected item.</h3>
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+   
+    <ng-container matColumnDef="itemname">
+      <mat-header-cell *matHeaderCellDef> Item </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.itemname}} </mat-cell>
+    </ng-container>
+  
+   
+    <ng-container matColumnDef="size">
+      <mat-header-cell *matHeaderCellDef> Size </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.size}} </mat-cell>
+    </ng-container>
+  
+   
+    <ng-container matColumnDef="quantity">
+      <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.quantity}} </mat-cell>
+    </ng-container>
+    
+
+    <ng-container matColumnDef="price">
+      <mat-header-cell *matHeaderCellDef> Price/Unit(Rs.) </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+    </ng-container>
+    
+    <ng-container matColumnDef="amount">
+        <mat-header-cell *matHeaderCellDef>Amount(Rs.)</mat-header-cell>
+        <mat-cell *matCellDef="let element">
+            <div *ngIf="element.size == 'Small'">
+                {{1 * element.price * element.quantity}}
+            </div> 
+            <div *ngIf="element.size == 'Medium'">
+                {{2 * element.price * element.quantity}}
+            </div> 
+            <div *ngIf="element.size == 'Full'">
+                {{3 * element.price * element.quantity}}
+            </div> 
+         </mat-cell>
+    </ng-container>    
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table> 
+  <p>
+    <button type="button" routerLink="/menu" routerLinkActive="active" mat-raised-button color="warn" class="background-warn text-floral-white">Add more Item</button> 
+    <button type="button" mat-raised-button color="warn" class="background-warn text-floral-white">Proceed to Pay</button> 
+  </p>    
+</div>  
+</div>
